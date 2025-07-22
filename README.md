@@ -1,4 +1,4 @@
-# Dash
+# [Dash](https://samisalmon.github.io/dash/)
 
 This is a modern, single-page dashboard built with plain HTML, Tailwind CSS, and Chart.js.
 
