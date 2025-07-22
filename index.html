@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Professional Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex">
+  <!-- Sidebar -->
+  <aside class="w-64 bg-gradient-to-b from-blue-700 to-blue-900 text-white flex flex-col p-6 min-h-screen shadow-lg">
+    <div class="mb-10">
+      <h1 class="text-2xl font-bold tracking-wide">My Dashboard</h1>
+      <p class="text-blue-200 text-sm mt-1">Professional Overview</p>
+    </div>
+    <nav class="flex-1">
+      <ul class="space-y-4">
+        <li><a href="#" class="block py-2 px-4 rounded hover:bg-blue-800 transition">Overview</a></li>
+        <li><a href="#" class="block py-2 px-4 rounded hover:bg-blue-800 transition">Analytics</a></li>
+        <li><a href="#" class="block py-2 px-4 rounded hover:bg-blue-800 transition">Reports</a></li>
+        <li><a href="#" class="block py-2 px-4 rounded hover:bg-blue-800 transition">Settings</a></li>
+      </ul>
+    </nav>
+    <div class="mt-10">
+      <button class="w-full py-2 bg-blue-600 rounded hover:bg-blue-700 transition font-semibold">Logout</button>
+    </div>
+  </aside>
+  <!-- Main Content -->
+  <main class="flex-1 p-10">
+    <h2 class="text-3xl font-bold mb-8 text-gray-800">Dashboard Overview</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <!-- Chart 1 -->
+      <div class="bg-white rounded-lg shadow p-6">
+        <h3 class="text-xl font-semibold mb-4">Sales Trend</h3>
+        <canvas id="lineChart" height="200"></canvas>
+      </div>
+      <!-- Chart 2 -->
+      <div class="bg-white rounded-lg shadow p-6">
+        <h3 class="text-xl font-semibold mb-4">Revenue Breakdown</h3>
+        <canvas id="barChart" height="200"></canvas>
+      </div>
+    </div>
+  </main>
+  <script>
+    // Line Chart
+    const ctxLine = document.getElementById('lineChart').getContext('2d');
+    new Chart(ctxLine, {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+        datasets: [{
+          label: 'Sales',
+          data: [120, 190, 300, 250, 220, 320, 400],
+          backgroundColor: 'rgba(59, 130, 246, 0.2)',
+          borderColor: 'rgba(59, 130, 246, 1)',
+          borderWidth: 2,
+          pointBackgroundColor: 'rgba(59, 130, 246, 1)',
+          tension: 0.4
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: false }
+        },
+        scales: {
+          y: { beginAtZero: true }
+        }
+      }
+    });
+    // Bar Chart
+    const ctxBar = document.getElementById('barChart').getContext('2d');
+    new Chart(ctxBar, {
+      type: 'bar',
+      data: {
+        labels: ['Product A', 'Product B', 'Product C', 'Product D'],
+        datasets: [{
+          label: 'Revenue',
+          data: [5000, 3000, 4000, 2500],
+          backgroundColor: [
+            'rgba(59, 130, 246, 0.7)',
+            'rgba(16, 185, 129, 0.7)',
+            'rgba(245, 158, 11, 0.7)',
+            'rgba(239, 68, 68, 0.7)'
+          ],
+          borderRadius: 6
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: false }
+        },
+        scales: {
+          y: { beginAtZero: true }
+        }
+      }
+    });
+  </script>
+</body>
+</html> 
